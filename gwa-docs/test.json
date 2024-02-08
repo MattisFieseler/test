@@ -1,0 +1,20 @@
+{"items": {"itemtypes": {
+            "itemtype": [{
+                    "@code": "ContentCatalog",
+                    "@autocreate": "false",
+                    "@generate": "false",
+                    "description": "Extending the Content Catalog type from core with additional attributes.",
+                    "attributes": {
+                        "attribute": {
+                            "@qualifier": "emailNotifiersList",
+                            "@type": "WagoLang2EmployeeList",
+                            "description": "Email notification will be sent to these employees after translation import",
+                            "persistence": {
+                                "@type": "property"
+                            }
+                        }
+                    }
+                }]
+}
+}
+}
