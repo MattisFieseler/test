@@ -1,5 +1,8 @@
-{"items": {"itemtypes": {
-            "itemtype": [{
+{
+    "items": {
+        "itemtypes": {
+            "itemtype": [
+                {
                     "@code": "ContentCatalog",
                     "@autocreate": "false",
                     "@generate": "false",
@@ -14,7 +17,8 @@
                             }
                         }
                     }
-                }]
-}
-}
+                }
+            ]
+        }
+    }
 }
