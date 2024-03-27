@@ -8,8 +8,10 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # the application crashes without emitting any logs due to buffering.
 ENV PYTHONUNBUFFERED=1
 
+WORKDIR /github/workspace
+
 # Copy the source code into the container.
 COPY . ./github/workspace/.
 
 # Run the application.
-CMD ["python", "/github/workspace/hello_world.py"]
+CMD "ls -la /github/workspace && echo 'Hello, World!'"
