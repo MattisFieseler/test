@@ -9,7 +9,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Copy the source code into the container.
-COPY . ./github/workspace
+COPY . ./github/workspace/.
 
 # Run the application.
 CMD ["python", "hello_world.py"]
