@@ -1,6 +1,6 @@
 #!/bin/sh -l
 
-ls -la
+ls /gwa-docs -la
 
 echo "Hello $1"
 time=$(date)
