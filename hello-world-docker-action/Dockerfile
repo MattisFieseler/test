@@ -1,15 +1,8 @@
-ARG PYTHON_VERSION=3.12.2
-FROM python:${PYTHON_VERSION}-slim as base
+# Container image that runs your code
+FROM alpine:3.10
 
-# Prevents Python from writing pyc files.
-ENV PYTHONDONTWRITEBYTECODE=1
+# Copies your code file from your action repository to the filesystem path `/` of the container
+COPY entrypoint.sh /entrypoint.sh
 
-# Keeps Python from buffering stdout and stderr to avoid situations where
-# the application crashes without emitting any logs due to buffering.
-ENV PYTHONUNBUFFERED=1
-
-# Copy the source code into the container.
-COPY hello_world.py /hello_world.py
-
-# Run the application.
-CMD "echo 'Hello, World!'"
+# Code file to execute when the docker container starts up (`entrypoint.sh`)
+ENTRYPOINT ["/entrypoint.sh"]
