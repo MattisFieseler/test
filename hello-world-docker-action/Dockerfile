@@ -12,4 +12,4 @@ ENV PYTHONUNBUFFERED=1
 COPY . ./github/workspace/.
 
 # Run the application.
-CMD ["python", "hello_world.py"]
+CMD ["python", "/github/workspace/hello_world.py"]
