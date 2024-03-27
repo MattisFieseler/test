@@ -1,6 +1,7 @@
 #!/bin/sh -l
 
-ls ./gwa-docs -la
+ls ./hello-world-docker-action -la
+python3
 
 echo "Hello $1"
 time=$(date)
