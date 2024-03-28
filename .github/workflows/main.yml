@@ -9,11 +9,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build Docker Image
-        run: docker build -t hello-world-action ./hello-world-docker-action
+        run: docker build -t hello-world-action .
 
       - name: Run Docker
         run: docker run hello-world-action
   generate_plantuml:
+    needs: hello_world_job
     runs-on: ubuntu-latest
     name: plantuml
     steps:
