@@ -15,32 +15,8 @@ jobs:
       - name: Run Docker
         run: |
           docker run --rm -v $(pwd):/app pumlcreator
-      - name: Upload file as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: core
-          path: ./docs/core.puml
-  generate_plantuml:
-    needs: puml_creator
-    runs-on: ubuntu-latest
-    if: contains(github.event.head_commit.message, 'Render PlantUML files') == false && contains(github.event.head_commit.message, 'Create PlantUML files') == false
-    name: plantuml
-    steps:
-    - name: checkout
-      uses: actions/checkout@v1
-    - name: Download artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: core
-        path: docs  # Directory to download the artifact to
-    - name: listdir
-      run: ls -R
-    - name: plantuml
-      id: plantuml
-      uses: grassedge/generate-plantuml-action@v1.5
-      with:
-        path: docs
-        message: "Render PlantUML files"
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+          git config --global user.email "mattis.fieseler@wago.com"
+          git config --global user.name "Mattis Fieseler"
+          git add *
+          git commit -m "Create PlantUML files"
+          git push

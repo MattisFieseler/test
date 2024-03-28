@@ -1,4 +1,4 @@
-import os, xml.etree.ElementTree as ET
+import os, xml.etree.ElementTree as ET, requests
 
 print(os.listdir())
 tree = ET.parse("core-items.xml")
@@ -27,3 +27,7 @@ for itemtype in itemtypes:
 print(os.listdir("./docs"))
 with open("./docs/core.puml", "r") as f:
     print(f.read())
+
+response = requests.post("http://test_plantuml_1:8080/svg", data={"plantuml": open("./docs/core.puml", "r").read()})
+with open("./docs/core.svg", "w+") as f:
+    f.write(response.content)
