@@ -15,8 +15,8 @@ for itemtype in itemtypes:
         f.write("    BorderColor Black\n")
         f.write("    ArrowColor Black\n")
         f.write("}\n")
-        f.write(f"package core" + r" {\n")
-        f.write(f"    class {itemtype.get('code')}" + r" {\n")
+        f.write(f"package core" + " {\n")
+        f.write(f"    class {itemtype.get('code')}" + " {\n")
         for attribute in attributes:
             f.write(f"        {attribute.get('qualifier')}: {attribute.get('type')}\n")
         f.write("    }\n")
