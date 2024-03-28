@@ -34,6 +34,8 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v1
+    - name: listdir
+      run: ls -R
     - name: plantuml
       id: plantuml
       uses: grassedge/generate-plantuml-action@v1.5
