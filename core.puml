@@ -4,7 +4,9 @@ skinparam class {
     BorderColor Black
     ArrowColor Black
 }
-package core {\n    class Item {\n        creationtime: java.util.Date
+package core {
+    class Item {
+        creationtime: java.util.Date
     }
 }
 @enduml
