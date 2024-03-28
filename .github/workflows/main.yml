@@ -1,6 +1,18 @@
-name: generate plantuml
-on: push
+on: [push]
+
 jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A Test job
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: docker build -t hello-world-action ./hello-world-docker-action
+
+      - name: Run Docker
+        run: docker run hello-world-action
   generate_plantuml:
     runs-on: ubuntu-latest
     name: plantuml
@@ -17,3 +29,4 @@ jobs:
         message: "Render PlantUML files"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
