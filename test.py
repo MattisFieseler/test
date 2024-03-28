@@ -6,9 +6,10 @@ tree = ET.parse("core-items.xml")
 root = tree.getroot()
 
 itemtypes = root.find("itemtypes")
+os.makedirs("./docs", exist_ok=True)
 for itemtype in itemtypes:
     attributes = itemtype.find("attributes")
-    with open("./docs/core.puml", "w+") as f:
+    with open("./docs/core.puml", "a+") as f:
         f.write("@startuml\n")
         f.write("skinparam class {\n")
         f.write("    BackgroundColor White\n")
