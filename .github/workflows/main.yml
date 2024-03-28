@@ -15,25 +15,12 @@ jobs:
       - name: Run Docker
         run: |
           docker run --rm -v $(pwd):/app hello-world-action
-          git config --global user.email "mattis.fieseler@wago.com"
-          git config --global user.name "GitHub Actions"
-          git add .
-          git commit -m "Create PlantUML files"
-          git push
-  generate_plantuml:
-    needs: hello_world_job
-    runs-on: ubuntu-latest
-    if: contains(github.event.head_commit.message, 'Render PlantUML files') == false && contains(github.event.head_commit.message, 'Create PlantUML files') == false
-    name: plantuml
-    steps:
-    - name: checkout
-      uses: actions/checkout@v1
-    - name: plantuml
-      id: plantuml
-      uses: grassedge/generate-plantuml-action@v1.5
-      with:
-        path: .
-        message: "Render PlantUML files"
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
+      - name: plantuml
+        id: plantuml
+        uses: grassedge/generate-plantuml-action@v1.5
+        with:
+          path: .
+          message: "Render PlantUML files"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
