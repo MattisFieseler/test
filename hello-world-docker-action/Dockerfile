@@ -1,8 +1,8 @@
 # Container image that runs your code
-FROM ubuntu:latest
+FROM python:3.12.2
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh /entrypoint.sh
+COPY test.py /test.py
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["sudo /entrypoint.sh"]
+CMD ["python", "test.py"]
