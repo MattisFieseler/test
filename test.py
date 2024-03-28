@@ -8,7 +8,7 @@ root = tree.getroot()
 itemtypes = root.find("itemtypes")
 for itemtype in itemtypes:
     attributes = itemtype.find("attributes")
-    with open("core.puml", "w+") as f:
+    with open("docs/core.puml", "w+") as f:
         f.write("@startuml\n")
         f.write("skinparam class {\n")
         f.write("    BackgroundColor White\n")
@@ -24,5 +24,5 @@ for itemtype in itemtypes:
         f.write("@enduml\n")
 
 print(os.listdir())
-with open("core.puml", "r") as f:
+with open("docs/core.puml", "r") as f:
     print(f.read())
