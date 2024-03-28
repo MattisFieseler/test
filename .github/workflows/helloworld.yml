@@ -3,12 +3,13 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: A Test job
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Hello world action step
-        id: hello
-        uses: ./hello-world-docker-action/
-        
-      # Use the output from the `hello` step
+
+      - name: Build Docker Image
+        run: docker build -t hello-world-action ./hello-world-docker-action
+
+      - name: Run Docker
+        run: docker run hello-world-action
