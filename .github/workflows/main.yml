@@ -11,7 +11,7 @@ jobs:
 
       - name: Run Docker
         run: |
-          docker compose up --build
+          docker compose up --build --abort-on-container-exit
           git config --global user.email "mattis.fieseler@wago.com"
           git config --global user.name "Mattis Fieseler"
           git add *

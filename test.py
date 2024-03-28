@@ -1,4 +1,5 @@
 import os, xml.etree.ElementTree as ET, requests
+import time
 
 print(os.listdir())
 tree = ET.parse("core-items.xml")
@@ -24,7 +25,6 @@ string +="@enduml\n"
 with open("./docs/core.puml", "w+") as f:
     f.write(string)
 #delay request to wait for plantuml server to start
-import time
 time.sleep(5)
 response = requests.post("http://test-plantuml-1:8080/svg", data=string)
 with open("./docs/core.svg", "wb") as f:
