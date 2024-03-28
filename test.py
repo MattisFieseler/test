@@ -7,27 +7,24 @@ root = tree.getroot()
 
 itemtypes = root.find("itemtypes")
 os.makedirs("./docs", exist_ok=True)
+string = "@startuml\n"
 for itemtype in itemtypes:
     attributes = itemtype.find("attributes")
-    with open("./docs/core.puml", "a+") as f:
-        f.write("@startuml\n")
-        f.write("skinparam class {\n")
-        f.write("    BackgroundColor White\n")
-        f.write("    BorderColor Black\n")
-        f.write("    ArrowColor Black\n")
-        f.write("}\n")
-        f.write(f"package core" + " {\n")
-        f.write(f"    class {itemtype.get('code')}" + " {\n")
-        for attribute in attributes:
-            f.write(f"        {attribute.get('qualifier')}: {attribute.get('type')}\n")
-        f.write("    }\n")
-        f.write("}\n")
-        f.write("@enduml\n")
+    string +="skinparam class {\n"
+    string +="    BackgroundColor White\n"
+    string +="    BorderColor Black\n"
+    string +="    ArrowColor Black\n"
+    string +="}\n"
+    string +=f"package core" + " {\n"
+    string +=f"    class {itemtype.get('code')}" + " {\n"
+    for attribute in attributes:
+        string +=f"        {attribute.get('qualifier')}: {attribute.get('type')}\n"
+    string +="    }\n"
+    string +="}\n"
+string +="@enduml\n"
+with open("./docs/core.puml", "w+") as f:
+    f.write(string)
 
-print(os.listdir("./docs"))
-with open("./docs/core.puml", "r") as f:
-    print(f.read())
-
-response = requests.post("http://test_plantuml_1:8080/svg", data={"plantuml": open("./docs/core.puml", "r").read()})
-with open("./docs/core.svg", "w+") as f:
+response = requests.post("http://test-plantuml-1:8080/svg", data=string)
+with open("./docs/core.svg", "wb") as f:
     f.write(response.content)
