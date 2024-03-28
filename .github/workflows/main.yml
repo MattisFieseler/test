@@ -15,12 +15,6 @@ jobs:
       - name: Run Docker
         run: |
           docker run --rm -v $(pwd):/app hello-world-action
-      - name: Check for changes
-        id: check_changes
-        run: echo changed=$(git diff --name-only) >> $GITHUB_OUTPUT
-      - name: Commit if changes exist
-        if: steps.check_changes.outputs.changed != ''
-        run: |
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
           git add *
