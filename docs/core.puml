@@ -1,0 +1,22 @@
+@startuml
+skinparam class {
+    BackgroundColor White
+    BorderColor Black
+    ArrowColor Black
+}
+package core {
+    class Item {
+        creationtime: java.util.Date
+    }
+}
+skinparam class {
+    BackgroundColor White
+    BorderColor Black
+    ArrowColor Black
+}
+package core {
+    class Item2 {
+        creationtime: java.util.Date
+    }
+}
+@enduml
