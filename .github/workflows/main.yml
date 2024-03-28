@@ -12,7 +12,7 @@ jobs:
         run: docker build -t hello-world-action .
 
       - name: Run Docker
-        run: docker run -v $(pwd):/app hello-world-action 
+        run: docker run --rm -v $(pwd):/app hello-world-action 
   generate_plantuml:
     needs: hello_world_job
     runs-on: ubuntu-latest
@@ -26,7 +26,7 @@ jobs:
       id: plantuml
       uses: grassedge/generate-plantuml-action@v1.5
       with:
-        path: gwa-docs
+        path: .
         message: "Render PlantUML files"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

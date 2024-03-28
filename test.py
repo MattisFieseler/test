@@ -22,3 +22,7 @@ for itemtype in itemtypes:
         f.write("    }\n")
         f.write("}\n")
         f.write("@enduml\n")
+
+print(os.listdir())
+with open("core.puml", "r") as f:
+    print(f.read())
