@@ -12,7 +12,7 @@ jobs:
         run: docker build -t hello-world-action .
 
       - name: Run Docker
-        run: docker run -v -v $(pwd):/app hello-world-action 
+        run: docker run -v $(pwd):/app hello-world-action 
   generate_plantuml:
     needs: hello_world_job
     runs-on: ubuntu-latest
