@@ -1,7 +1,8 @@
 #!/bin/sh -l
 
 ls ./hello-world-docker-action -la
-python3
+sudo apt install python3 -y
+python3 test.py
 
 echo "Hello $1"
 time=$(date)
