@@ -15,11 +15,11 @@ jobs:
       - name: Run Docker
         run: |
           docker run --rm -v $(pwd):/app hello-world-action
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
-          git add *
-          git commit -m "Create PlantUML files"
-          git push
+      - name: Upload file as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: core
+          path: ./docs/core.puml
   generate_plantuml:
     needs: hello_world_job
     runs-on: ubuntu-latest
@@ -28,6 +28,11 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v1
+    - name: Download artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: core
+        path: docs  # Directory to download the artifact to
     - name: listdir
       run: ls -R
     - name: plantuml
