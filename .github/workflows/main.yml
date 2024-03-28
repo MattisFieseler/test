@@ -15,6 +15,8 @@ jobs:
       - name: Run Docker
         run: |
           docker run --rm -v $(pwd):/app hello-world-action
+          git config --global user.email "mattis.fieseler@wago.com"
+          git config --global user.name "GitHub Actions"
           git commit -am "Create PlantUML files"
           git push
   generate_plantuml:
